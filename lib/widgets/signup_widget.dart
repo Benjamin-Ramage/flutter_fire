@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fire/main.dart';
 import 'package:flutter_fire/error_messages.dart';
-import 'package:flutter_fire/widgets/textfields/emailTextField.dart';
 
 class SignUpWidget extends StatefulWidget {
   final Function() onClickedSignIn;
@@ -123,8 +122,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     } on FirebaseAuthException catch (e) {
       ErrorMessages.showSnackBar(e.message);
     }
-
-    // Navigator.of(context) not working!
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

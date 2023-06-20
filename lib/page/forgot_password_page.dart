@@ -84,8 +84,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       ErrorMessages.showSnackBar('Password Reset Email Sent');
       Navigator.of(context).popUntil((route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
-      print(e);
-
       ErrorMessages.showSnackBar(e.message);
       Navigator.of(context).pop();
     }
