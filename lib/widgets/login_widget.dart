@@ -19,6 +19,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  bool isHidden = false;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -59,15 +60,19 @@ class _LoginWidgetState extends State<LoginWidget> {
             TextField(
               controller: passwordController,
               textInputAction: TextInputAction.done,
-              obscureText: true,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(
+              obscureText: isHidden,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(
                   Icons.lock,
                   color: Colors.white,
                 ),
+                suffixIcon: IconButton(
+                  onPressed: togglePasswordVisibility,
+                  icon: isHidden ? const Icon(Icons.visibility_off, color: Colors.white) : const Icon(Icons.visibility, color: Colors.white),
+                ),
                 labelText: 'Password',
-                border: OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
+                focusedBorder: const OutlineInputBorder(),
               ),
               style: Theme.of(context).textTheme.headline6,
             ),
@@ -122,6 +127,8 @@ class _LoginWidgetState extends State<LoginWidget> {
       ),
     ),
   );
+
+  void togglePasswordVisibility() => setState(() => isHidden = !isHidden);
 
   Future signIn() async {
     showDialog(

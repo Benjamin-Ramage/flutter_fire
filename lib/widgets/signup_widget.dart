@@ -78,7 +78,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   focusedBorder: OutlineInputBorder(),
                 ),
                 style: Theme.of(context).textTheme.headline6,
-                obscureText: true,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) => value != null && value.length < 6
                     ? 'Enter min. 6 characters'
