@@ -38,14 +38,23 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               Text(
                 'Receive an email to\nreset your password.',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headline6,
               ),
               const SizedBox(height: 20),
               TextFormField(
                 controller: emailController,
                 cursorColor: Colors.white,
                 textInputAction: TextInputAction.done,
-                decoration: const InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.mail,
+                    color: Colors.white,
+                  ),
+                  labelText: "What's your email address?",
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(),
+                ),
+                style: Theme.of(context).textTheme.headline6,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (email) =>
                 email != null && !EmailValidator.validate(email)

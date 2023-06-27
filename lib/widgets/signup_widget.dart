@@ -35,7 +35,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     resizeToAvoidBottomInset: false,
     backgroundColor: AppColours.backgroundColour,
     body: Padding(
-      padding: const EdgeInsets.only(left: 16, top: 100, right: 16, bottom: 16),
+      padding: const EdgeInsets.only(left: 16, top: 80, right: 16, bottom: 16),
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
@@ -43,30 +43,48 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(child: ClipOval(child: Image.asset('images/avataar_ben.png'))),
-              const SizedBox(height: 20),
+              const SizedBox(height: 25),
               TextFormField(
                 controller: emailController,
                 cursorColor: Colors.white,
                 textInputAction: TextInputAction.next,
-                decoration: const InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.mail,
+                    color: Colors.white,
+                  ),
+                  labelText: "What's your email address?",
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(),
+                ),
+                style: Theme.of(context).textTheme.headline6,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (email) =>
                 email != null && !EmailValidator.validate(email)
-                    ? 'Enter a valid email'
+                    ? 'Please enter a valid email'
                     : null,
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: passwordController,
                 textInputAction: TextInputAction.next,
-                decoration: const InputDecoration(labelText: 'Password'),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: Colors.white,
+                  ),
+                  labelText: 'Create a password',
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(),
+                ),
+                style: Theme.of(context).textTheme.headline6,
                 obscureText: true,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) => value != null && value.length < 6
                     ? 'Enter min. 6 characters'
                     : null,
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(60),
@@ -83,7 +101,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               const SizedBox(height: 20),
               RichText(
                 text: TextSpan(
-                  style: const TextStyle(color: Colors.white, fontSize: 20),
+                  style: Theme.of(context).textTheme.headline6,
                   text: 'Already have an account?  ',
                   children: [
                     TextSpan(
@@ -92,7 +110,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       text: 'Log In',
                       style: TextStyle(
                         decoration: TextDecoration.underline,
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: AppColours.teal,
                       ),
                     ),
                   ],

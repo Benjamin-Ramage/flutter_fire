@@ -17,32 +17,36 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-    scaffoldMessengerKey: ErrorMessages.messengerKey,
-    navigatorKey: navigatorKey,
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData.dark().copyWith(
-      colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
-          .copyWith(secondary: Colors.tealAccent),
-    ),
-    home: const MainPage(),
-  );
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      scaffoldMessengerKey: ErrorMessages.messengerKey,
+      navigatorKey: navigatorKey,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
+            .copyWith(secondary: Colors.tealAccent),
+      ),
+      home: const MainPage(),
+    );
+  }
 }
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    body: StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return const VerifyEmailPage();
-        } else {
-          return const AuthPage();
-        }
-      },
-    ),
-  );
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const VerifyEmailPage();
+          } else {
+            return const AuthPage();
+          }
+        },
+      ),
+    );
+  }
 }

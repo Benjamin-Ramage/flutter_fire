@@ -10,33 +10,38 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Text(
+          'Home',
+          style: Theme.of(context).textTheme.headline6,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(32),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Signed In as',
-              style: TextStyle(fontSize: 16),
+              style: Theme.of(context).textTheme.headline6,
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             Text(
               user.email!,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.headline6,
             ),
             const SizedBox(height: 40),
-            ElevatedButton.icon(
+            ElevatedButton(
               style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(50),
-              ),
-              icon: const Icon(Icons.arrow_back, size: 32),
-              label: const Text(
-                'Sign Out',
-                style: TextStyle(fontSize: 24),
+                  minimumSize: const Size.fromHeight(60),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  )
               ),
               onPressed: () => FirebaseAuth.instance.signOut(),
+              child: Text(
+                'SIGN OUT',
+                style: Theme.of(context).textTheme.headline6,
+              ),
             ),
           ],
         ),

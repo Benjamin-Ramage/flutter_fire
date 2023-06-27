@@ -34,24 +34,42 @@ class _LoginWidgetState extends State<LoginWidget> {
     resizeToAvoidBottomInset: false,
     backgroundColor: AppColours.backgroundColour,
     body: Padding(
-      padding: const EdgeInsets.only(left: 16, top: 100, right: 16, bottom: 16),
+      padding: const EdgeInsets.only(left: 16, top: 80, right: 16, bottom: 16),
       child: SingleChildScrollView(
         child: Column(
           children: [
             Center(child: ClipOval(child: Image.asset('images/avataar_ben.png'))),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             TextField(
               controller: emailController,
               cursorColor: Colors.white,
               textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(labelText: 'Email'),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(
+                  Icons.mail,
+                  color: Colors.white,
+                ),
+                labelText: 'Email address',
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(),
+              ),
+              style: Theme.of(context).textTheme.headline6,
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 20),
             TextField(
               controller: passwordController,
               textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(labelText: 'Password'),
               obscureText: true,
+              decoration: const InputDecoration(
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                ),
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(),
+              ),
+              style: Theme.of(context).textTheme.headline6,
             ),
             const SizedBox(height: 20),
             ElevatedButton(
@@ -73,7 +91,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 'Forgot Password?',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: AppColours.teal,
                   fontSize: 20,
                 ),
               ),
@@ -84,7 +102,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             const SizedBox(height: 16),
             RichText(
               text: TextSpan(
-                style: const TextStyle(color: Colors.white, fontSize: 20),
+                style: Theme.of(context).textTheme.headline6,
                 text: 'No account?  ',
                 children: [
                   TextSpan(
@@ -93,7 +111,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     text: 'Sign Up',
                     style: TextStyle(
                       decoration: TextDecoration.underline,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: AppColours.teal,
                     ),
                   ),
                 ],

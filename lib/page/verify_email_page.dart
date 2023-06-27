@@ -37,7 +37,6 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   @override
   void dispose() {
     timer?.cancel();
-
     super.dispose();
   }
 
@@ -78,18 +77,18 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'A verification email has been sent to your email.',
+            'A verification email has been sent to your inbox.',
             style: TextStyle(fontSize: 20),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               minimumSize: const Size.fromHeight(50),
             ),
             icon: const Icon(Icons.email, size: 32),
             label: const Text(
-              'Resent Email',
+              'Resend Email',
               style: TextStyle(fontSize: 24),
             ),
             onPressed: canResendEmail ? sendVerificationEmail : null,
@@ -99,9 +98,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
             style: ElevatedButton.styleFrom(
               minimumSize: const Size.fromHeight(50),
             ),
-            child: const Text(
+            child: Text(
               'Cancel',
-              style: TextStyle(fontSize: 24),
+              style: Theme.of(context).textTheme.headline6,
             ),
             onPressed: () => FirebaseAuth.instance.signOut(),
           ),
