@@ -29,6 +29,13 @@
             {
               "client_id": "975702272668-g85gbf7j5pk0cmk630qq2am4ll26eqmn.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "975702272668-4jmjn6co7eheqifdqgvkr3l245kj95e7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ben.ramage.flutterFire"
+              }
             }
           ]
         }

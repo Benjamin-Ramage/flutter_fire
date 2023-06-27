@@ -14,8 +14,6 @@ Future main() async {
 final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
-  static const String title = 'Firebase Auth';
-
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -23,7 +21,6 @@ class MyApp extends StatelessWidget {
     scaffoldMessengerKey: ErrorMessages.messengerKey,
     navigatorKey: navigatorKey,
     debugShowCheckedModeBanner: false,
-    title: title,
     theme: ThemeData.dark().copyWith(
       colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
           .copyWith(secondary: Colors.tealAccent),
