@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fire/error_messages.dart';
 import 'package:flutter_fire/theme/colours.dart';
+import 'package:flutter_fire/widgets/login_widget.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
 
@@ -75,6 +76,21 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
+              const SizedBox(height: 24),
+              GestureDetector(
+                child: Text(
+                  'Already have an account?',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: AppColours.teal,
+                    fontSize: 20,
+                  ),
+                ),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => LoginWidget(onClickedSignUp: () {  },),
+                )),
+              ),
+              const SizedBox(height: 16),
             ],
           ),
         ),
